@@ -1,0 +1,102 @@
+﻿@using BLOG.MVC.Areas.Dashboard.Models
+@model PostViewModel
+@{
+    ViewBag.Title = "PostAdd";
+    Layout = "~/Areas/Dashboard/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>Gönderi Ekleme</h2>
+
+<div class="container">
+    @if (ViewBag.Msg != null)
+    {
+        <span class="alert alert-success">@ViewBag.Msg</span>
+
+    }
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("PostAdd", "Post",FormMethod.Post,new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="container" style="border-bottom-color:aliceblue" ,"">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DropDownListFor(x => x.Post.CategoryId, ViewBag.Categories as SelectList, "Kategori Seçiniz...", new { @class = "form-control" })
+                        </div>
+
+                    </div>
+                    <br />
+                    <br />
+
+                </div>
+
+                <label style="color:blue"><b>Gönderiniz için başlık giriniz</b> </label>
+                @Html.TextBoxFor(x => x.Post.Title, new { @class = "form-control", @type = "text", @style = "font-family:tahoma" })
+                <span class="text-danger">@Html.ValidationMessageFor(x => x.Post.Title)</span>
+                <br />
+                <br />
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <label style="color:blue"><b>Tag ekleyebilirsiniz</b> </label>
+                            @Html.TextBoxFor(x => x.Post.Tag, new { @class = "form-control", @type = "text", @style = "font-family:tahoma" })
+                            <span class="text-danger">@Html.ValidationMessageFor(x => x.Post.Tag)</span>
+
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <label style="color:blue"><b>Açıklama</b> </label>
+                            @Html.TextAreaFor(x => x.Post.Description, new { @class = "form-control", @type = "text", @style = "font-family:tahoma", rows = 3 })
+
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <label style="color:blue"><b>Özet</b> </label>
+                            @Html.TextAreaFor(x => x.Post.Summary, new { @class = "form-control", @type = "text", @style = "font-family:tahoma", rows = 3 })
+
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label style="color:blue"><b>Dosya</b> </label>
+                            <input type="file" name="PostedPicture"  />
+
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <input class="btn btn-primary" type="submit" name="name" value="Gönderi Paylaş" />
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

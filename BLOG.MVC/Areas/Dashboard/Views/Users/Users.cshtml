@@ -1,0 +1,42 @@
+﻿@using BLOG.DAL.Entities
+@model IEnumerable<Users>
+@{
+
+    Layout = "~/Areas/Dashboard/Views/Shared/_LayoutPage.cshtml";
+}
+
+
+<h2>Kullanıcı Listesi</h2>
+
+<div class="container">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>İsim</th>
+                <th>Soyisim</th>
+                <th>Email Adres</th>
+                <th>İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>@item.Id</th>
+                    <td>@item.Name</td>
+                    <td>@item.LastName</td>
+                    <td>@item.Email</td>
+                    <td>
+                        @*<button class="btn btn-primary">Düzenle</button>*@
+                        <a class="btn btn-primary" href="/Dashboard/Users/UsersUpdate/@item.Id" role="button">Düzenle</a>
+                        <a class="btn btn-primary" href="/Dashboard/Users/Sil/@item.Id" role="button">Sil</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+</div>

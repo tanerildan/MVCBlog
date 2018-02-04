@@ -1,0 +1,28 @@
+﻿@using BLOG.DAL.Entities
+@model Post
+@{
+    ViewBag.Title = "Sil";
+    Layout = "~/Areas/Dashboard/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>Sil</h2>
+<div class="container">
+   @if (ViewBag.Msg != null)
+   {
+    <span class="alert alert-success">@ViewBag.Msg</span>
+   }
+    <div class="row">
+        <div class="col-md-12>">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <label style="color:dimgrey"><b style="color:black">Seçili gönderiyi silmek istediğinizden emin misiniz?</b></label>
+                <a class="btn btn-primary" href="/Dashboard/Post/Post" role="button">Geri Dön</a>
+                <input class="btn btn-danger" type="submit" name="name" value="Gönderi Sil" />
+
+            }
+        </div>
+    </div>
+</div>
+             
+

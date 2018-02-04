@@ -1,0 +1,58 @@
+﻿@using BLOG.DAL.Entities
+@model IEnumerable<Post>
+@{
+    ViewBag.Title = "Post";
+    Layout = "~/Areas/Dashboard/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>Gönderiler</h2>
+<div class="container">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Başlık</th>
+                <th>Açıklama</th>
+                <th>Taglar</th>
+                <th>Özet</th>
+                <th>Görsel</th>
+                <th>İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>@item.Id</th>
+                    <td>@item.Title</td>
+                    <td>@item.Description</td>
+                    <td>@item.Tag</td>
+                    <td>@item.Summary</td>
+                    <td>@item.PostPic</td>
+                    <td>
+                        @*<button class="btn btn-primary">Düzenle</button>*@
+
+                        <a class="btn btn-primary" href="/Dashboard/Post/PostUpdate/@item.Id" role="button">Düzenle</a>
+                        <br />
+                        <a class="btn btn-danger" href="/Dashboard/Post/Sil/@item.Id" role="button">Sil</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <a class="btn btn-primary" href="/Dashboard/Post/PostAdd" role="button"> Yeni Gönderi </a>
+
+                </tr>
+            </thead>
+
+        </table>
+    </div>
+</div>
+
+

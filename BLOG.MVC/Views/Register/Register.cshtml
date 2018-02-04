@@ -1,0 +1,79 @@
+﻿@using System.Web.Optimization
+@using BLOG.DAL.Entities
+@model Users
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SB Admin - Start Bootstrap Template</title>
+    @Styles.Render("~/bundlesLogin/styles")
+</head>
+<body class="bg-dark">
+    <div class="container">
+        <div class="card card-register mx-auto mt-5">
+            <div class="card-header">Register an Account</div>
+            @*<span class="alert-danger" >@ViewBag.Msg</span>
+                <span class="alert-success">@ViewBag.Msg</span>*@
+            <div class="card-body">
+                @using (Html.BeginForm("Register", "Register", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label>İsim</label>
+                                @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @type = "text", @placeholder = "İsminizi giriniz" })
+                                <div style="color:red;">
+                                    @Html.ValidationMessageFor(x => x.Name)
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label> Soyisim </label>
+                                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control", @type = "text", @placeholder = "Soyisminizi giriniz" })
+                             <div style="color:red;">@Html.ValidationMessageFor(x => x.LastName)</div>  
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>E-Mail Adresi </label>
+                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @type = "email", @placeholder = "Email adresinizi giriniz" })
+                      <div style="color:red;">@Html.ValidationMessageFor(x => x.Email)</div>  
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label>Şifre:</label>
+                                @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @type = "password", @placeholder = "şifrenizi giriniz" })
+                             <div style="color:red">@Html.ValidationMessageFor(x => x.Password)</div>  
+                            </div>
+                            <div class="col-md-6">
+                                <label>Şifreyi Tekrarlayınız</label>
+                                @Html.TextBoxFor(x => x.PasswordConfirm, new { @class = "form-control", @type = "password", @placeholder = "Şifreyinizi tekrardan giriniz" })
+                             <div style="color:red">@Html.ValidationMessageFor(x => x.PasswordConfirm)</div>  
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Kayıt Tamamla" class="btn btn-primary btn-block" />
+    }
+                <div class="text-center">
+                    <a class="d-block small mt-3" href="login.html">Login Page</a>
+                    <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundlesLogin/scripts")
+</body>
+</html>

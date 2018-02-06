@@ -16,19 +16,20 @@ namespace BLOG.MVC.Areas.Dashboard.Controllers
         {
             _uow = uow;
         }
+        [Authorize]
         // GET: Dashboard/Category
         public ActionResult Category(Category model)
         {
             var data = _uow.GetRepo<Category>().GetList();
             return View(data);
         }
-
+        [Authorize]
         public ActionResult CategoryUpdate(int id)
         {
             var model = _uow.GetRepo<Category>().GetObject(x => x.Id == id);
             return View(model);
         }
-        [HttpPost] [ValidateAntiForgeryToken]
+        [HttpPost] [ValidateAntiForgeryToken][Authorize]
         public ActionResult CategoryUpdate(Category model)
         {
             var validator = new CategoryUpdateValidator(_uow).Validate(model);
@@ -48,7 +49,7 @@ namespace BLOG.MVC.Areas.Dashboard.Controllers
             }
             return View();
         }
-
+        [Authorize]
         public ActionResult Sil(int id)
         {
             _uow.GetRepo<Category>().Delete(id);
@@ -56,12 +57,13 @@ namespace BLOG.MVC.Areas.Dashboard.Controllers
             ViewBag.Mesg = "Başarıyla silindi";
             return RedirectToAction("Category", "Category");
         }
+        [Authorize]
         public ActionResult CategoryAdd()
         {
             return View();
         }
 
-        [HttpPost][ValidateAntiForgeryToken]
+        [HttpPost][ValidateAntiForgeryToken][Authorize]
         public ActionResult CategoryAdd(Category model)
         {
             var validator = new CategoryAddValidator(_uow).Validate(model);

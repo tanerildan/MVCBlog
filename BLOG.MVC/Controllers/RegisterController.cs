@@ -32,7 +32,7 @@ namespace BLOG.MVC.Controllers
                 model.RoleId = 2;    
                 _uow.GetRepo<Users>().Add(model);
                 _uow.Commit();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Home", "SiteHome");
             }
           
            

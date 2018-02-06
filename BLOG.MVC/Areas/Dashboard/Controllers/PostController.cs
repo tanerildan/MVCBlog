@@ -19,11 +19,13 @@ namespace BLOG.MVC.Areas.Dashboard.Controllers
             _uow = uow;
         }
         // GET: Dashboard/Post
+        [Authorize]
         public ActionResult Post()
         {
             var data = _uow.GetRepo<Post>().GetList();
             return View(data);
         }
+        [Authorize]
         public ActionResult PostAdd()
         {
             var categories = _uow.GetRepo<Category>().GetList().ToList();
@@ -31,7 +33,7 @@ namespace BLOG.MVC.Areas.Dashboard.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost][Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult PostAdd(PostViewModel model)
         {
@@ -68,6 +70,7 @@ namespace BLOG.MVC.Areas.Dashboard.Controllers
             return View();
         }
 
+        [Authorize]
        public ActionResult PostUpdate(int id)
         {
             var model = new PostViewModel
@@ -76,7 +79,7 @@ namespace BLOG.MVC.Areas.Dashboard.Controllers
             };
             return View(model);
         }
-        [HttpPost] [ValidateAntiForgeryToken]
+        [HttpPost] [ValidateAntiForgeryToken][Authorize]
        public ActionResult PostUpdate(PostViewModel model)
         {
             var validator = new PostUpdateValidator(_uow).Validate(model.Post);
@@ -102,11 +105,12 @@ namespace BLOG.MVC.Areas.Dashboard.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Sil()
         {
             return View();
         }
-        [HttpPost][ValidateAntiForgeryToken]
+        [HttpPost][ValidateAntiForgeryToken][Authorize]
         public ActionResult Sil(int id)
         {
             _uow.GetRepo<Post>().Delete(id);

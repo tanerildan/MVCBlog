@@ -8,6 +8,7 @@ namespace BLOG.MVC.Areas.Dashboard.Controllers
 {
     public class AdminController : Controller
     {
+        [Authorize]
         // GET: Dashboard/Admin
         public ActionResult Home()
         {

@@ -17,19 +17,20 @@ namespace BLOG.MVC.Areas.Dashboard.Controllers
             _uow = uow;
         }
         // GET: Dashboard/Users
+        [Authorize]
         public ActionResult Users(Users model)
         {
             var data = _uow.GetRepo<Users>().GetList();
             return View(data);
         }
-
+        [Authorize]
         public ActionResult UsersUpdate(int id)
         {
             var model = _uow.GetRepo<Users>().GetObject(x => x.Id == id);
             return View(model);
         }
 
-        [HttpPost]
+        [HttpPost][Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult UsersUpdate(Users model)
         {
@@ -52,7 +53,7 @@ namespace BLOG.MVC.Areas.Dashboard.Controllers
             }
             return View();
         }
-
+        [Authorize]
         public ActionResult Sil(int id)
         {
             _uow.GetRepo<Users>().Delete(id);

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using BLOG.BLL.Services.Concretes;
 using BLOG.BLL.Services.Abstracts;
 using System.IO;
+using System.Web.Security;
 
 namespace BLOG.MVC.Controllers
 {
@@ -43,7 +44,8 @@ namespace BLOG.MVC.Controllers
                 var result = _uow.GetRepo<Users>().Where(x => x.Email == model.Email && x.Password == model.Password).FirstOrDefault();
                 if (result != null)
                 {
-                    return Redirect("/Dashboard/Admin/Home");
+                    FormsAuthentication.SetAuthCookie(result.Email, false);
+                    return Redirect("/Dashboard");
 
                 }
                 else

@@ -361,6 +361,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Dashboard\Views\Logout\" />
     <Folder Include="ForgetPasswordTemplate\css\fonts\" />
     <Folder Include="Images\" />
     <Folder Include="LoginTemplate\css\fonts\" />

@@ -17,7 +17,7 @@ namespace BLOG.MVC.Areas.Dashboard
             context.MapRoute(
                 "Dashboard_default",
                 "Dashboard/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { controller="Admin", action = "Home", id = UrlParameter.Optional }
             );
         }
     }

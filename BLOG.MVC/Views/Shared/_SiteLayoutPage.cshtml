@@ -64,7 +64,7 @@
         <div class="post-preview">
             @if (item.PostPic == null)
             {
-                <a href="/SiteHome/">
+                <a href="/SiteHome/PostView/@item.Id">
 
                     <h2 class="post-title">
                         @item.Title
@@ -73,14 +73,14 @@
                 <p class="post-meta">
                     Posted by
                     <a href="#">Start Bootstrap</a>
-                    on September 18, 2018
+                    on <p>@item.PostDate.ToShortDateString()</p>
                 </p>
                 <hr />
             }
             else
             {
-                <img src="~/Images/" width="300" height="300" />
-                 <a href="/SiteHome/">
+                <img src="~/Images/" width="500" height="300" />
+                 <a href="/SiteHome/PostView/@item.Id">
 
                     <h2 class="post-title">
                         @item.Title
@@ -88,7 +88,7 @@
                 </a>
                 <p class="post-meta">
                     Posted by
-                    <a href="#">Start Bootstrap</a>
+                    <a href="">Start Bootstrap</a>
                     on September 18, 2018
                 </p>
             }

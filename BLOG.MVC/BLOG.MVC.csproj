@@ -298,9 +298,15 @@
     <Content Include="SiteTemplate\css\clean-blog.min.css" />
     <Content Include="SiteTemplate\css\font-awesome.min.css" />
     <Content Include="SiteTemplate\css\fonts\fontawesome-webfont.svg" />
+    <Content Include="SiteTemplate\img\about-bg.jpg" />
+    <Content Include="SiteTemplate\img\contact-bg.jpg" />
+    <Content Include="SiteTemplate\img\home-bg.jpg" />
+    <Content Include="SiteTemplate\img\post-bg.jpg" />
+    <Content Include="SiteTemplate\img\post-sample-image.jpg" />
     <Content Include="SiteTemplate\js\02bootstrap.bundle.min.js" />
     <Content Include="SiteTemplate\js\03clean-blog.min.js" />
     <Content Include="SiteTemplate\js\01jquery.min.js" />
+    <Content Include="SiteTemplate\post.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -320,6 +326,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PostCommentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteController\SiteHomeController.cs" />
   </ItemGroup>
@@ -351,6 +358,7 @@
     <Content Include="SiteTemplate\css\fonts\FontAwesome.otf" />
     <Content Include="Views\Shared\_SiteLayoutPage.cshtml" />
     <Content Include="Views\SiteHome\Home.cshtml" />
+    <Content Include="SiteTemplate\img\Thumbs.db" />
     <Content Include="Views\SiteHome\PostView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -365,9 +373,7 @@
     <Folder Include="ForgetPasswordTemplate\css\fonts\" />
     <Folder Include="Images\" />
     <Folder Include="LoginTemplate\css\fonts\" />
-    <Folder Include="Models\" />
     <Folder Include="RegisterTemplate\css\fonts\" />
-    <Folder Include="SiteTemplate\img\" />
     <Folder Include="Views\Post\" />
   </ItemGroup>
   <ItemGroup>

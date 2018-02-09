@@ -1,4 +1,5 @@
 ﻿using BLOG.DAL.Entities;
+using BLOG.MVC.Models;
 using BLOG.Repository.UOW.Abstract;
 using System;
 using System.Collections.Generic;
@@ -16,14 +17,21 @@ namespace BLOG.MVC.SiteController
             _uow = uow;
         }
         // GET: SiteHome
+      
         public ActionResult Home()
         {
-            var data = _uow.GetRepo<Post>().GetList().OrderBy(x => x.PostDate);
+            var data = _uow.GetRepo<Post>().GetList().ToList();
+            return View(data);
+
+        }
+
+        public ActionResult PostView(int id)
+        {
+            var data = _uow.GetRepo<Post>().Where(x => x.Id == id
+           ).FirstOrDefault();
+           
             return View(data);
         }
-        public ActionResult PostView()
-        {
-            return View();
+           
         }
     }
-}

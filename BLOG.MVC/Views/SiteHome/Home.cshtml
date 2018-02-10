@@ -1,5 +1,5 @@
-﻿@using BLOG.DAL.Entities
-@model IEnumerable<Post>
+﻿@using BLOG.MVC.Models
+@model PostCommentModel
 
 @{
     ViewBag.Title = "Home";
@@ -7,5 +7,44 @@
 }
 
 
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    foreach (var item in Model.Posts)
+    {
+        <div class="post-preview">
+            @if (item.PostPic == null)
+            {
+                <a href="/SiteHome/PostView/@item.Id">
 
+                    <h2 class="post-title">
+                        @item.Title
+                    </h2>
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <a href="#">Start Bootstrap</a>
+                    on
+                <p>@item.PostDate.ToShortDateString()</p>
+                </p>
+                <hr />
+            }
+            else
+            {
+                <img src="~/Images/" width="500" height="300" />
+                <a href="/SiteHome/PostView/@item.Id">
 
+                    <h2 class="post-title">
+                        @item.Title
+                    </h2>
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <a href="">Start Bootstrap</a>
+                    on September 18, 2018
+                </p>
+            }
+        </div>
+    }
+
+}

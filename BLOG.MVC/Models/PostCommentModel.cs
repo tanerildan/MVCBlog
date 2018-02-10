@@ -8,7 +8,7 @@ namespace BLOG.MVC.Models
 {
     public class PostCommentModel
     {
-        public Post Posts { get; set; }
-        public Comments Comment { get; set; }
+        public IEnumerable<Post> Posts { get; set; }
+        public IEnumerable<Comments> Comment { get; set; }
     }
 }

@@ -20,9 +20,9 @@ namespace BLOG.MVC.SiteController
       
         public ActionResult Home()
         {
-            var data = _uow.GetRepo<Post>().GetList().ToList();
-            return View(data);
-
+            PostCommentModel model = new PostCommentModel();
+            model.Posts = _uow.GetRepo<Post>().GetList();
+         return View(model);
         }
 
         public ActionResult PostView(int id)
